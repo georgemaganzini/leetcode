@@ -1,29 +1,25 @@
-const fruitsIntoBaskets = (trees) => {
+const longestWithDistinct = (string) => {
     let freq = {};
     let start = 0;
-    let most = 0;
-    for (let end = 0; end < trees.length; end++){
-        trees[end]
-        if (!(trees[end] in freq)){
-            freq[trees[end]] = 0;
+    let maxLength = 0;
+    for (let end = 0; end < string.length; end++){
+        const right = string[end];
+        if (!(right in freq)){
+            freq[right] = 0;
         }
-        freq[trees[end]] += 1;
-
-        while (Object.keys(freq).length > 2){
-            const leftFruit = trees[start];
-            freq[leftFruit] -= 1;
-            if (freq[leftFruit] === 0){
-                delete freq[leftFruit];
+        freq[right] += 1;
+        while (Math.max(...Object.values(freq)) > 1){
+            const left = string[start];
+            freq[left] -= 1;
+            if (freq[left]=== 0){
+                delete freq[left]
             }
-
-            start++;
+            start++
         }
-        most = Math.max(most, Object.values(freq).reduce((a,b)=> a + b))
+        maxLength = Math.max(maxLength, end - start + 1)
     }
-
-    return most
+    return maxLength
 }
 
-trees = ['A', 'B', 'C', 'B', 'B', 'C'];
-
-console.log(fruitsIntoBaskets(trees));
+const string = "abccde"
+console.log(longestWithDistinct(string))
