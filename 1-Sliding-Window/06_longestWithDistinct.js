@@ -27,5 +27,5 @@ const longestWithDistinct = (string) => {
     }
     return maxLength
 }
-const string = "abccdefghijklmnop"
+const string = "abccdcadefghijklmnop"
 console.log(longestWithDistinct(string))
