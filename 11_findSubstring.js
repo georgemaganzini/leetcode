@@ -7,9 +7,7 @@ function find_substring(str, pattern) {
 
   for (i = 0; i < pattern.length; i++) {
     const chr = pattern[i];
-    if (!(chr in charFrequency)) {
-      charFrequency[chr] = 0;
-    }
+    if (!(chr in charFrequency)) charFrequency[chr] = 0;
     charFrequency[chr] += 1;
   }
 
@@ -18,9 +16,7 @@ function find_substring(str, pattern) {
     const rightChar = str[windowEnd];
     if (rightChar in charFrequency) {
       charFrequency[rightChar] -= 1;
-      if (charFrequency[rightChar] >= 0) { // Count every matching of a character
-        matched += 1;
-      }
+      if (charFrequency[rightChar] >= 0) matched += 1; // Count every matching of a character
     }
 
     // Shrink the window if we can, finish as soon as we remove a matched character

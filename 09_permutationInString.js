@@ -5,9 +5,7 @@ const stringPermutation = (str, pattern) => {
 
     for (i = 0; i < pattern.length; i++){
         const chr = pattern[i];
-        if(!(chr in charFrequency)) {
-            charFrequency[chr] = 0;
-        }
+        if(!(chr in charFrequency)) charFrequency[chr] = 0;
         charFrequency[chr] += 1;
     }
 

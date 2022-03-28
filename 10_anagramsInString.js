@@ -5,9 +5,7 @@ const anagramsInString = (str, pattern) => {
 
     for (i = 0; i < pattern.length; i++){
         const chr = pattern[i];
-        if (!(chr in charFrequency)) {
-            charFrequency[chr] = 0;
-        }
+        if (!(chr in charFrequency)) charFrequency[chr] = 0;
         charFrequency[chr] += 1;
     }
 
@@ -29,9 +27,7 @@ const anagramsInString = (str, pattern) => {
             leftChar = str[windowStart];
             windowStart += 1;
             if (leftChar in charFrequency){
-                if (charFrequency[leftChar] === 0){
-                    matched -= 1; // before putting the character back, decrement the matched count
-                }
+                if (charFrequency[leftChar] === 0) matched -= 1; // before putting the character back, decrement the matched count
                 charFrequency[leftChar] += 1; // put the character back
             }
         }

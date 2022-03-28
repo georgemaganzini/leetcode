@@ -20,7 +20,6 @@ const findWordConcat = (str, words) => {
             let word = str.substring(nextWordIndex, nextWordIndex + wordLength);
             if (!(word in wordFrequency)) break;
 
-
         // Add the word to the 'wordsSeen' map
         if (!(word in wordsSeen)) wordsSeen[word] = 0;
         wordsSeen[word] += 1;
