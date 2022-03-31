@@ -1,32 +1,34 @@
-// Given an array with positive numbers and a positive target number, find
-// all of its contiguous subarrays whose product is less than the target number.
+// Given an array arr of unsorted numbers and a target sum, count all triplets in it such
+// that arr[i] + arr[j] + arr[k] < target where i, j, and k are three different indices.
+// Write a function to return the count of such triplets.
 
-const Deque = require('./collections/deque'); // http://www.collectionsjs.com
-
-
-function find_subarrays(arr, target) {
-  let result = [],
-    product = 1,
-    left = 0;
-  for (right = 0; right < arr.length; right++) {
-    product *= arr[right];
-    while ((product >= target && left < arr.length)) {
-      product /= arr[left];
-      left += 1;
-    }
-    // since the product of all numbers from left to right is less than the target
-    // therefore, all subarrays from left to right will have a product less than the
-    // target too; to avoid duplicates, we will start with a subarray containing only
-    // arr[right] and then extend it
-    const tempList = new Deque();
-    for (let i = right; i > left - 1; i--) {
-      tempList.unshift(arr[i]);
-      result.push(tempList.toArray());
-    }
+function triplet_with_smaller_sum(arr, target) {
+  arr.sort((a, b) => a - b);
+  let count = 0;
+  for (i = 0; i < arr.length - 2; i++) {
+    count += search_pair(arr, target - arr[i], i);
   }
-  return result;
+  return count;
 }
 
 
-console.log(find_subarrays([2, 5, 3, 10], 30));
-console.log(find_subarrays([8, 2, 6, 5], 50));
+function search_pair(arr, target_sum, first) {
+  let count = 0;
+  let left = first + 1,
+    right = arr.length - 1;
+  while (left < right) {
+    if (arr[left] + arr[right] < target_sum) { // found the triplet
+      // since arr[right] >= arr[left], therefore, we can replace arr[right] by any
+      // number between left and right to get a sum less than the target sum
+      count += right - left;
+      left += 1;
+    } else {
+      right -= 1; // we need a pair with a smaller sum
+    }
+  }
+  return count;
+}
+
+
+console.log(triplet_with_smaller_sum([-1, 0, 2, 3], 3));
+console.log(triplet_with_smaller_sum([-1, 4, 2, 1, 3], 5));

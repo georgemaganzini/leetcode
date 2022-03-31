@@ -19,7 +19,7 @@ function triplet_sum_close_to_target(arr, targetSum) {
       // have more than one solution
       if (Math.abs(target_diff) < Math.abs(smallest_difference) ||
         (Math.abs(target_diff) === Math.abs(smallest_difference) &&
-                                 target_diff > smallest_difference)) {
+                                 target_diff > smallest_difference)) { // ??? confusing line
         smallest_difference = target_diff; // save the closest and the biggest difference
       }
 
