@@ -1,8 +1,8 @@
 // Given an array with positive numbers and a positive target number, find all
 // of its contiguous subarrays whose product is less than the target number.
 
-const Deque = require('./collections/deque'); //http://www.collectionsjs.com
 
+const Deque = require('./collections/deque'); //http://www.collectionsjs.com
 
 function find_subarrays(arr, target) {
   let result = [],
