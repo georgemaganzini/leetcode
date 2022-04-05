@@ -9,6 +9,7 @@ function find_first_smallest_missing_positive(nums) {
       i += 1;
     }
   }
+//   console.log(nums)
   for (i = 0; i < n; i++) {
     if (nums[i] !== i + 1) {
       return i + 1;
