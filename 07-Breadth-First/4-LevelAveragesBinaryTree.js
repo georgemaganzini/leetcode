@@ -1,4 +1,4 @@
-const Deque = require('./collections/deque'); //http://www.collectionsjs.com
+const Deque = require('collections/deque'); //http://www.collectionsjs.com
 
 
 class TreeNode {
