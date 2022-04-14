@@ -6,7 +6,6 @@ function search_bitonic_array(arr, key) {
   }
   return binary_search(arr, key, maxIndex + 1, arr.length - 1);
 }
-
 // find index of the maximum value in a bitonic array
 function find_max(arr) {
   let start = 0,
@@ -22,8 +21,6 @@ function find_max(arr) {
   // at the end of the while loop, 'start === end'
   return start;
 }
-
-
 // order-agnostic binary search
 function binary_search(arr, key, start, end) {
   while (start <= end) {
