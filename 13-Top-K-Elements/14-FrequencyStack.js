@@ -1,6 +1,5 @@
 const Heap = require('./collections/heap'); //http://www.collectionsjs.com
 
-
 class Element {
   constructor(number, frequency, sequenceNumber) {
     this.number = number;
@@ -25,7 +24,6 @@ class FrequencyStack {
     this.maxHeap = new Heap([], null, ((a, b) => a.compare(b)));
   }
 
-
   push(num) {
     if (!(num in this.frequencyMap)) {
       this.frequencyMap[num] = 1;
@@ -48,7 +46,6 @@ class FrequencyStack {
     return num;
   }
 }
-
 
 const frequencyStack = new FrequencyStack();
 frequencyStack.push(1);
