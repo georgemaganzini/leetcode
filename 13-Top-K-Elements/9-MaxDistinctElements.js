@@ -1,6 +1,5 @@
 const Heap = require('./collections/heap'); //http://www.collectionsjs.com
 
-
 function find_maximum_distinct_elements(nums, k) {
   distinctElementsCount = 0;
   if (nums.length <= k) {
@@ -27,7 +26,6 @@ function find_maximum_distinct_elements(nums, k) {
     }
   });
 
-
   // following a greedy approach, try removing the least frequent numbers first from
   // the min-heap
   while (k > 0 && minHeap.length > 0) {
@@ -46,7 +44,6 @@ function find_maximum_distinct_elements(nums, k) {
 
   return distinctElementsCount;
 }
-
 
 console.log(`Maximum distinct numbers after removing K numbers: ${
   find_maximum_distinct_elements([7, 3, 5, 8, 5, 3, 3], 2)}`);
