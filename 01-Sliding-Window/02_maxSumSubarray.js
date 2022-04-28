@@ -4,7 +4,7 @@ const maxSubarray = (arr, k) => {
     let highest = 0;
 
     // important that we are tracking the END here, therefore we iterate until arr.length, not arr.length - k + 1 etc.
-    // keeping the variable names as semantic and accurate helps with bugfixing and mental models
+    // keeping the variable names as semantic and accurate as possible helps with bugfixing and readability
     for (let windowEnd = 0; windowEnd < arr.length; windowEnd++){
         sum += arr[windowEnd];
 
