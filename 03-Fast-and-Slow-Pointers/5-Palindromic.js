@@ -1,8 +1,3 @@
-// Given the head of a Singly LinkedList, write a method to check if the LinkedList is a palindrome or not.
-
-// Your algorithm should use constant space and the input LinkedList should be in the original form once the
-// algorithm is finished. The algorithm should have O(N)O(N) time complexity where ‘N’ is the number of nodes in the LinkedList.
-
 class Node {
   constructor(value, next = null) {
     this.value = value;
@@ -10,12 +5,10 @@ class Node {
   }
 }
 
-
 function is_palindromic_linked_list(head) {
   if (head === null || head.next === null) {
     return true;
   }
-
   // find middle of the LinkedList
   let slow = head,
     fast = head;
