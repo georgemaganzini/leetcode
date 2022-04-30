@@ -6,7 +6,6 @@ class TreeNode {
   }
 }
 
-
 class TreeDiameter {
   constructor() {
     this.treeDiameter = 0;
