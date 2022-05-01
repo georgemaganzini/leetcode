@@ -7,19 +7,18 @@ var maxDepth = function(root) {
 
     if(!root?.left && !root?.right) return highestDepth;
 
-    const checkDepth = (root, curDepth, highestDepth) => {
+    const checkDepth = (node, level,) => {
 
-        if(root.left === null && root.right=== null) {
-            highestDepth = Math.max(highestDepth, curDepth)
-        }
+        if(node === null) return
 
-        checkDepth(root?.left, curDepth + 1, highestDepth)
-        checkDepth(root?.right, curDepth + 1, highestDepth)
+        if (level > highestDepth) highestDepth = level;
+
+        checkDepth(node.left, level + 1)
+        checkDepth(node.right, level + 1)
 
     }
 
-    checkDepth(root?.left, 2, highestDepth)
-    checkDepth(root?.right, 2, highestDepth)
+    checkDepth(root, 1);
 
     return highestDepth
 };
