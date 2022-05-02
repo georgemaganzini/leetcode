@@ -1,13 +1,7 @@
 var maxDepth = function(root) {
     let highestDepth = 0;
 
-    if(!root) return highestDepth;
-
-    highestDepth++;
-
-    if(!root?.left && !root?.right) return highestDepth;
-
-    const checkDepth = (node, level,) => {
+    const checkDepth = (node, level) => {
 
         if(node === null) return
 
