@@ -20,3 +20,8 @@ var findDuplicate = function(nums) {
 
 let nums = [1,3,4,2,2];
 console.log(findDuplicate(nums))
+
+// Floyd's algorithm
+// Use fast and slow pointers to find first intersection
+// then create second slow pointer, when two slow pointers meet, duplicate is found
+// "n - 1" is clue that it's a linked list problem with a cycle
