@@ -9,8 +9,9 @@ var setZeroes = function(matrix) {
     const colLength = matrix[0].length;
     let rows = new Array(rowLength).fill(1);
     let columns = new Array(colLength).fill(1)
-
-
+    // flag matrix[0][0-colLength] as null to indicate column needs to be zeroed
+    // flag matrix[0-roWlength][0] as null to indicate row need to be zeroed
+    // how to interpret matrix[0][0] ?
 
     return matrix;
 };
