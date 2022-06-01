@@ -5,15 +5,16 @@ var exist = function(board, word) {
 
     const dfs = (r, c, i) => {
         if (i == word.length) return true;
-        if (r < 0 || c < 0 || r >= rows || c >= cols || word[i] != board[r][c] || [r,c] in path) return false;
+        if (r < 0 || c < 0 || r >= rows || c >= cols || word[i] != board[r][c] || path.has(`(${r},${c})`)) return false;
 
-        path.add([r,c]);
+        path.add(`(${r},${c})`);
         let res = ((dfs(r + 1, c, i + 1)) ||
                 (dfs(r - 1, c, i + 1)) ||
                 (dfs(r, c + 1, i + 1)) ||
                 (dfs(r, c - 1, i + 1)));
-        path.delete([r,c]);
-        // console.log(path)
+        // console.log("pre del", r, c, path)
+        path.delete(`(${r},${c})`);
+        // console.log("post del", path)
         return res;
     }
 
@@ -24,3 +25,9 @@ var exist = function(board, word) {
     }
     return false;
 };
+
+let board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]];
+
+let word = "ABCB";
+
+console.log((exist(board, word)));
