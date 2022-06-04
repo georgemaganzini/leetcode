@@ -1,25 +1,26 @@
 var letterCasePermutation = function(s) {
-    let res = [];
+    const res = [];
 
-    const dfs = (s, i, word) => {
+    const dfs = (s, i, slate) => {
         if (i === s.length) {
-            res.push(word.join(''));
+            res.push(slate.join(''));
             return;
         }
 
         let char = s[i];
 
-        if (!Number.isInteger(parseInt(char))){
-            word.push(char.toUpperCase());
-            dfs(s, i + 1, word);
-            word.pop();
+        if (isNaN(char)){
+            slate.push(char.toUpperCase());
+            dfs(s, i + 1, slate);
+            slate.pop();
 
-            word.push(char.toLowerCase());
-            dfs(s, i + 1, word);
-            word.pop();
+            slate.push(char.toLowerCase());
+            dfs(s, i + 1, slate);
+            slate.pop();
         } else {
-            word.push(char)
-            dfs(s, i + 1, word);
+            slate.push(char)
+            dfs(s, i + 1, slate);
+            slate.pop();
         }
     }
 
@@ -27,3 +28,7 @@ var letterCasePermutation = function(s) {
 
     return res;
 };
+
+let s = "a1b2"
+
+console.log(letterCasePermutation(s))
