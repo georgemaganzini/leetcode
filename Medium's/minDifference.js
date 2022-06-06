@@ -1,17 +1,19 @@
 var minDifference = function(nums) {
-    // can probably be done w/o sort
+    if (nums.length <= 4) return 0
+
     nums = nums.sort((a,b)=>a-b);
     let min = Infinity;
-    let right = nums.length - 4;
-    // console.log(nums)
-    for (let left = 0; left < 4; left++, right++){
-        let currMin = nums[right] - nums[left];
-        // console.log("left:", left, "right:", right)
 
-        min = Math.min(currMin, min);
+    let left = 0;
+    let right = nums.length - 4;
+
+    while (left <= 3) {
+        min = Math.min(nums[right] - nums[left], min);
+        left++;
+        right++;
     }
 
-    return min || 0;
+    return min;
 };
 
 let nums = [20,66,68,57,45,18,42,34,37,58];
