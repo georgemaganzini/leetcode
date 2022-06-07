@@ -3,7 +3,11 @@ var combine = function (n, k) {
 
     let result = [];
     const dfs = (slate, i) => {
-        if (slate.length == k) result.push(slate.slice());
+        if (slate.length == k) {
+            result.push(slate.slice());
+            return;
+        }
+
         for (let j = i; j <= n; j++) {
             slate.push(j);
             dfs(slate, j + 1);
