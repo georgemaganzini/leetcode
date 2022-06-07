@@ -1,17 +1,16 @@
-var combine = function(n, k) {
+var combine = function (n, k) {
+    if (n == 1 && k == 1) return [[1]];
+
     let result = [];
-
-    const dfs = (slate) => {
-
-        if (slate.length === k) {
-            result.push(slate)
-            return;
+    const dfs = (slate, i) => {
+        if (slate.length == k) result.push(slate.slice());
+        for (let j = i; j <= n; j++) {
+            slate.push(j);
+            dfs(slate, j + 1);
+            slate.pop();
         }
-
-        const start = slate.length === 0 ? 1 : slate[slate.length-1] + 1
-        for (let i = start; i <= n; i++) dfs(slate.concat(i));
     }
-    dfs([]);
+    dfs([], 1);
     return result;
 };
 
