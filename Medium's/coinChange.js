@@ -4,6 +4,7 @@
 
 var coinChange = function(coins, amount) {
     const table = new Array(amount+1).fill(Infinity);
+    // base case, i.e. if amount is zero, it can be made with zero coins
     table[0] = 0;
 
     for (let coin of coins) {
