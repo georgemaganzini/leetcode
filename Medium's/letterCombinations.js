@@ -1,3 +1,7 @@
+// make a hash for number-letter correspondence
+// follow recursive tree for each potential letter
+// add logic gates for 7 & 9 (represent 4 character rather than 3)
+
 var letterCombinations = function(digits) {
     let key = {
         2: "abc",

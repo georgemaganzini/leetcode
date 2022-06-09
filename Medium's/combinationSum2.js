@@ -1,3 +1,7 @@
+// Remember to sort first
+// evaluate current candidate to make
+// sure it is not the same as previous candidate
+
 var combinationSum2 = function(candidates, target) {
     let result = [];
 

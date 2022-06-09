@@ -1,3 +1,8 @@
+// DP version is very concise
+// Simply check if potential next number is valid (greater than current)
+// if so, add 1 to memo representing next index, then set current's memo
+// to the max of it's current val or the next index's + 1
+
 var lengthOfLIS = function(nums) {
     let dp = Array(nums.length).fill(1);
 

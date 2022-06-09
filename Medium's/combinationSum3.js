@@ -1,3 +1,7 @@
+// dealing with a set series 1-9, use swap method rather than push/pop
+// i iterates over the entire range for the first digit
+// j iterates to decide the second
+
 var combinationSum3 = function(k, n) {
     let result = [];
 

@@ -1,3 +1,8 @@
+// complete parens can be translated to:
+// right parens must be <= left parens
+// keep track of left and right count in dfs params,
+// only add right paren is r < l
+
 var generateParenthesis = function(n) {
     let result = [],
         left = 0,

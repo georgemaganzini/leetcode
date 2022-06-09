@@ -1,3 +1,7 @@
+// use DP via tabulation
+// make sure coin fits at index(cost), then add + 1 to the index represending the difference (i.e. subtraction)
+//
+
 var coinChange = function(coins, amount) {
     const table = new Array(amount+1).fill(Infinity);
     table[0] = 0;

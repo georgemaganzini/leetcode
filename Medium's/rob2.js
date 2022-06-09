@@ -1,3 +1,5 @@
+// create a helper function to run original rob on entire length - 1, and starting at index 1 to end
+
 var rob = function(nums) {
     if(!nums.length) return 0
     if(nums.length===1) return nums[0]

@@ -1,3 +1,7 @@
+// store both max and min as you walk along path (because they flip when you hit a negative number)
+// use a temp variable so as to not overwrite curMax (or curMin depending on how you order it)
+
+
 var maxProduct = function(nums) {
     let res = Math.max(...nums)
     let curMin = 1,
