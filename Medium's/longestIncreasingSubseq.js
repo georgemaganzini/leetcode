@@ -1,6 +1,6 @@
-// uses binary search to determine where new number belongs in final subarray
-//
-// cleverly overwrites dp indicies in a such a way that old length is stored until it is surpassed, uncomment lines 26, 58 for visualization
+// Uses binary search to determine where new number belongs in final subarray "sorts" the numbers as they build in increasing order,
+// when a non-increasing number is found, places it in the highest valid index possible. Cleverly overwrites dp indicies in a such a way
+// that the longest consecutive subarray is still stored until it is surpassed, uncomment lines 26, 58 for visualization
 
 var lengthOfLIS = function(nums) {
     const binarySearchPosition = (dp, target, hi) => {
