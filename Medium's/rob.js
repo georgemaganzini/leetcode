@@ -1,4 +1,4 @@
-// original dynammic programming method -> if choosing to rob a house, check if
+// original dynamic programming method -> if choosing to rob a house, check if
 // we have had a higher loot total before in this spot
 // alternatively it is a variation on fib, just check max from one before and two before
 
