@@ -9,6 +9,7 @@ var combinationSum4 = function(nums, target) {
         for(let j = 0; j < nums.length; j++) {
             // If the sum of the current position in dp and the current num is less than target, increment the index at the sum in dp array by all the ways to make dp[i]
             if(nums[j]+i <= target) dp[nums[j]+i] += dp[i]
+
         }
     }
     return dp[target]
