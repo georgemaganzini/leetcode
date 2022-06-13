@@ -4,7 +4,8 @@
 
 var countSubstrings = function(s) {
     let count = 0;
-    const checkPalindromeLength = (l, r) => {
+
+    const expand = (l, r) => {
         while (l >= 0 && r < s.length && s[l] === s[r]){
             count++;
             l--;
@@ -13,8 +14,9 @@ var countSubstrings = function(s) {
     }
 
     for (let i = 0; i < s.length; i++){
-        checkPalindromeLength(i, i);
-        if (i+1 < s.length) checkPalindromeLength(i, i + 1)
+        expand(i, i);
+        // if (i+1 < s.length) unnecessary, while loop requirements cover i > s.length
+        expand(i, i + 1)
     }
     return count;
 };
