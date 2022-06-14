@@ -1,4 +1,4 @@
-// still need to review
+// TODO: still need to review
 
 var findNumberOfLIS = function(nums) {
     let dp = {};
@@ -22,7 +22,6 @@ var findNumberOfLIS = function(nums) {
 
             }
         }
-
         if (maxLen > lenLIS){
             lenLIS = maxLen;
             res = maxCnt;
