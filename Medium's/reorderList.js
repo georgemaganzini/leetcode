@@ -1,5 +1,3 @@
-
-
 function ListNode(val, next) {
     this.val = (val===undefined ? 0 : val)
     this.next = (next===undefined ? null : next)
@@ -16,25 +14,28 @@ function ListNode(val, next) {
 
 
 var reorderList = function(head) {
+    // handle lengths of 1 and 2
     if (head.next === null || head.next.next === null) return;
-
     let fast = head;
     let slow = head;
-
+    // find (floored) midpoint
     while (fast !== null && fast.next !== null) {
         slow = slow.next;
         fast = fast.next.next;
     }
 
-    headSecondHalf = reverse(slow); // reverse the second half
+    // reverse second half, set new pointers to new heads
+    headSecondHalf = reverse(slow);
     headFirstHalf = head;
 
     // rearrange to produce the LinkedList in the required order
     while (headFirstHalf !== null && headSecondHalf !== null) {
+        // adjust pointers for first half
         temp = headFirstHalf.next;
         headFirstHalf.next = headSecondHalf;
         headFirstHalf = temp;
 
+        // adjust pointers for second half being inserted in
         temp = headSecondHalf.next;
         headSecondHalf.next = headFirstHalf;
         headSecondHalf = temp;
@@ -48,12 +49,17 @@ var reorderList = function(head) {
 
 
 function reverse(head) {
-  let prev = null;
-  while (head !== null) {
-    next = head.next;
-    head.next = prev;
-    prev = head;
-    head = next;
-  }
-  return prev;
+    // set prev to null to account for very end
+    let prev = null;
+        while (head !== null) {
+            // grab next
+            next = head.next;
+            // set current's pointer to prev
+            head.next = prev;
+            // set prev to current
+            prev = head;
+            // walk forward
+            head = next;
+        }
+    return prev;
 }
