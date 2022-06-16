@@ -1,4 +1,7 @@
-// TODO: review
+// walk along each LL with pointers while maintainig a carry variable as well
+// use a while loop + ternary operator, substituting 0 if node is null
+// add carry, mod by 10 to determine current/next digit, use math.floor to determine next carry
+// use a dummy node (-1) to start
 
 function ListNode(val, next) {
     this.val = (val===undefined ? 0 : val)
