@@ -1,5 +1,6 @@
 // dfs, create hashmap, track nodes as you clone them
-//
+// check if you've already visited/created this node as you recursively add neighbors
+
 
 function Node(val, neighbors) {
      this.val = val === undefined ? 0 : val;
@@ -12,13 +13,13 @@ cloneGraph = function(node) {
     const dfs = (node)  => {
         if (!node) return node;
 
-        if (created.has(node)) return created.get(node)
+        if (created.has(node)) return created.get(node);
 
-        let copy = new Node(node.val)
+        let copy = new Node(node.val);
 
         created.set(node, copy);
 
-        node.neighbors.forEach(n => copy.neighbors.push(dfs(n)))
+        node.neighbors.forEach(n => copy.neighbors.push(dfs(n)));
 
         return copy;
     }
