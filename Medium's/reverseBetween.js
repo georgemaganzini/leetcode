@@ -26,25 +26,23 @@ var reverseBetween = function(head, left, right) {
         counter++;
     }
 
-    const reverse = (head) => {
-        let tail = head;
-        let prev = null;
-        let counter = 0;
-        while (counter <= right - left){
-            next = head.next;
-            head.next = prev;
-            prev = head;
-            head = next;
-            counter++;
-        }
+    // set pointer to where reversal should begin
+    // this used to be a helper function
+    let newHead = preLeft.next
+    counter = 0;
+    let tail = newHead;
+    let prev = null;
 
-        return [prev, tail, head];
+    while (counter <= right - left){
+        next = newHead.next;
+        newHead.next = prev;
+        prev = newHead;
+        newHead = next;
+        counter++;
     }
 
-    let [secondHead, tail, thirdHead] = reverse(preLeft.next);
-
-    preLeft.next = secondHead;
-    tail.next = thirdHead;
+    preLeft.next = prev;
+    tail.next = newHead;
 
     // head.print_list();
     return dummy.next;
