@@ -16,6 +16,7 @@ var findPeakElement = function(nums) {
             right = mid;
         }
     }
+    // can return either left or right
     return left;
 };
 
