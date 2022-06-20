@@ -8,6 +8,19 @@ const {
   MaxPriorityQueue,
 } = require('@datastructures-js/priority-queue');
 
+var findKthLargest = (nums, k) => {
+    let pq = new MinPriorityQueue();
+
+    for (let x of nums) {
+        pq.enqueue(x);
+        if (pq.size() > k) {
+            pq.dequeue();
+        }
+    }
+
+    return pq.front().element;
+};
+
 // quickselect version:
 
 // var findKthLargest = (nums, k) => {
