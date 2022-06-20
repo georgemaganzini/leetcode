@@ -1,42 +1,42 @@
-const {
-  PriorityQueue,
-  MinPriorityQueue,
-  MaxPriorityQueue,
-} = require('@datastructures-js/priority-queue');
+// const {
+//   PriorityQueue,
+//   MinPriorityQueue,
+//   MaxPriorityQueue,
+// } = require('@datastructures-js/priority-queue');
 
-var reorganizeString = function(s) {
-    let res = "";
-    let pq = new PriorityQueue((a, b) => b[1] - a[1]);
-    let map = new Map();
+// var reorganizeString = function(s) {
+//     let res = "";
+//     let pq = new PriorityQueue((a, b) => b[1] - a[1]);
+//     let map = new Map();
 
-    for (let char of s) map.set(char, (map.get(char)|| 0) + 1)
+//     for (let char of s) map.set(char, (map.get(char)|| 0) + 1)
 
-    for (let item of map) pq.enqueue(item)
+//     for (let item of map) pq.enqueue(item)
 
-    let prev = null;
-    let current = null;
+//     let prev = null;
+//     let current = null;
 
-    while (pq.size()){
+//     while (pq.size()){
 
-        current = pq.dequeue();
-        res += current[0];
-        current[1]--;
-        if (current[1]=== 0) current = null;
+//         current = pq.dequeue();
+//         res += current[0];
+//         current[1]--;
+//         if (current[1]=== 0) current = null;
 
-        if (prev !== null) pq.enqueue(prev);
+//         if (prev !== null) pq.enqueue(prev);
 
-        prev = current;
-    }
+//         prev = current;
+//     }
 
-    if (!prev) return res;
-    else {
-        if (prev[1] > 1) return "";
-        else return res += prev[0];
-    }
-};
+//     if (!prev) return res;
+//     else {
+//         if (prev[1] > 1) return "";
+//         else return res += prev[0];
+//     }
+// };
 
-let s = "aab";
-console.log(reorganizeString(s));
+// let s = "aab";
+// console.log(reorganizeString(s));
 
 // alternate:
 
@@ -68,16 +68,23 @@ var reorganizeString = function(S) {
     map[maxLetter]--;
   }
 
+  console.log(map)
+  console.log(index)
+
   //Embed rest of characters into res
   for (let key in map) {
-    while (map[key] > 0) {
-      if (index >= res.length) index = 1;
-      res[index] = key;
-      index += 2;
-      map[key]--
+      while (map[key] > 0) {
+          if (index >= res.length) index = 1;
+          res[index] = key;
+          index += 2;
+          map[key]--
+          console.log(res)
     }
   }
 
 return res.join('');
 
 };
+
+let s = "aaaaabbbbbczzzzz";
+console.log(reorganizeString(s));
