@@ -1,5 +1,3 @@
-
-
 function TreeNode(val, left, right) {
       this.val = (val===undefined ? 0 : val)
       this.left = (left===undefined ? null : left)
@@ -15,7 +13,7 @@ var pathSum = function(root, targetSum) {
     let result = [];
 
     const checkPath = (root, sum, slate) => {
-        if (root === null) return;
+        if (!root) return;
 
         slate.push(root.val);
 
