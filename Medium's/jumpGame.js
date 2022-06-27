@@ -1,3 +1,6 @@
+// iterate in reverse order, checking if there is a valid path to end, when valid path is found,
+// move goalpost to closer path that we know can reach end
+// if we can get to the start index return true
 var canJump = function(nums) {
     let goal = nums.length - 1;
 
