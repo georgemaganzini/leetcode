@@ -11,16 +11,40 @@ const {
 } = require('@datastructures-js/priority-queue');
 
 
+// var canPartitionKSubsets = function(nums, k) {
+//     nums.sort((a, b) => b - a);
+
+//     let arrayOfBuckets = []
+
+//     for (let i = 0; i < k; i++){
+//         arrayOfBuckets.push([`bucket #${i}`, 0]);
+//     }
+
+//     const pq = new MinPriorityQueue((tuple)=>tuple[1]);
+
+//     for (let bucket of arrayOfBuckets){
+//         pq.enqueue(bucket)
+//     }
+
+//     for (let num of nums) {
+//         let lowest = pq.dequeue();
+//         lowest[1] += num;
+//         pq.enqueue(lowest);
+//     }
+
+//     return arrayOfBuckets.every((val) => val[1] === arrayOfBuckets[0][1])
+// };
+
 var canPartitionKSubsets = function(nums, k) {
     nums.sort((a, b) => b - a);
 
     let arrayOfBuckets = []
 
     for (let i = 0; i < k; i++){
-        arrayOfBuckets.push([`bucket #${i}`, 0]);
+        arrayOfBuckets.push([0]);
     }
 
-    const pq = new MinPriorityQueue((tuple)=>tuple[1]);
+    const pq = new MinPriorityQueue();
 
     for (let bucket of arrayOfBuckets){
         pq.enqueue(bucket)
@@ -28,7 +52,7 @@ var canPartitionKSubsets = function(nums, k) {
 
     for (let num of nums) {
         let lowest = pq.dequeue();
-        lowest[1] += num;
+        lowest[0] += num;
         pq.enqueue(lowest);
     }
 
