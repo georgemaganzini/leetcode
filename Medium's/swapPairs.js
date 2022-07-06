@@ -16,32 +16,11 @@ class Node {
 
 
 var swapPairs = function(head) {
-    let secondNodeinPair = false;
-    let originalHead = head;
-    if (head.next) originalHead = head.next;
-
-    while (head) {
-
-        if (secondNodeinPair) {
-            // point prev node to next
-            prev.next = head.next
-            // point current node to prev
-            head.next = prev;
-            // hold new next in temporary variable
-            temp = prev.next
-            // adjust prev and head pointers
-            prev = head;
-            head = temp;
-        } else {
-            temp = head.next;
-            prev = head;
-            head = temp;
-        }
-
-        secondNodeinPair = !secondNodeinPair;
-    }
-
-    return originalHead ? originalHead : null;
+    if(!head || !head.next) return head;
+    var v1 = head, v2 = head.next, v3 = v2.next;
+    v2.next = v1;
+    v1.next = swapPairs(v3);
+    return v2;
 };
 
 
