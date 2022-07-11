@@ -3,27 +3,16 @@
  * @return {number}
  */
 var maxProfit = function(prices) {
-    let profit = 0;
-
-    let dp = {}; // key = (i, buying) val=max_profit
-
-    const dfs = (holding, i, currProfit) => {
-        if (i >= prices.length) {
-            profit = Math.max(profit, currProfit);
-            return;
-        }
-        if (!holding) {
-            if (!cd) dfs(true, i + 1, currProfit - prices[i]) // buy
-            dfs(false, i + 1, currProfit) // skip
-        } else if (holding) {
-            dfs(false, i + 2, currProfit + prices[i]) //sell
-            dfs(true, i + 1, currProfit) //skip
-        }
+    let hold = -Infinity, sold = 0, rest = 0;
+    for (let i = 0; i < prices.length; i++) {
+        let nextHold = Math.max(hold, rest - prices[i]);
+        let nextSold = hold + prices[i];
+        let nextRest = Math.max(rest, sold);
+        hold = nextHold;
+        sold = nextSold;
+        rest = nextRest;
     }
-
-    dfs(false, false, 0, 0);
-
-    return profit
+    return Math.max(sold, rest);
 };
 
 let prices = [1,2,3,0,2];
