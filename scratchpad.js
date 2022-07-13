@@ -1,86 +1,41 @@
+// Modify and override these functions to aid you in defeating Caesar.
 
-const findNthPrime = (n) => {
-    if (n < 1) return null;
-
-    let primeNumbers = [2];
-
-    for (let i = 3; primeNumbers.length < n; i += 2){
-        let isPrime = true;
-        for (let j = 0; j < primeNumbers.length; j++) {
-            if (primeNumbers[j] * primeNumbers[j] <= i){
-                if (i % primeNumbers[j] === 0){
-                    isPrime = false;
-                    break;
-                }
-            }
-        }
-        if (isPrime) primeNumbers.push(i);
-    }
-    return primeNumbers[n-1];
+// Called by Rubicon when a player moves.
+// PlayerMoved can be overridden.
+function PlayerMoved(playerId, nodeId, movesRemaining) {
+  console.log(
+    `Player ${playerId} has moved: ${nodeId}. Remaining: ${movesRemaining}`
+  );
 }
 
-// console.log(findNthPrime(5))
-
-// function Rational(x, y) {
-
-// }
-//     let g = gcd(Math.abs(x), Math.abs(y));
-
-//     let num = x / g;
-
-//     let den = Math.abs(y) / g;
-
-//     if (y < 0) num = -num;
-
-
-//     toString: function() {
-//         if (den === 1) return "" + num;
-//         return num + "/" + den;
-//         }
-
-// }
-
-
-class Rational {
-    constructor(numerator, denominator){
-        this.numerator = numerator;
-        this.denominator = denominator;
-    }
-
-    getNumerator(){
-        return this.numerator;
-    }
-
-    getDenominator(){
-        return this.denominator
-    }
-
-    add(num){
-        return new Rational(this.getNumerator() * num.getDenominator() + num.getNumerator() * this.getDenominator(), this.getDenominator() * num.getDenominator());
-    }
-
-    subtract(num){
-        return new Rational(this.getNumerator() * num.getDenominator() - num.getNumerator() * this.getDenominator(), this.getDenominator() * num.getDenominator());
-    }
-
-    multiply(num){
-        return new Rational(this.getNumerator() * num.getNumerator(), this.getDenominator() * num.getDenominator());
-    }
-
-    divide(num){
-        return new Rational(this.getNumerator() * num.getDenominator(), this.getDenominator() * num.getNumerator());
-    }
-
-    printDecimal(){
-        return console.log(this.getNumerator()/this.getDenominator());
-    }
-
-    printFraction(){
-        return console.log(`${this.getNumerator()}/${this.getDenominator()}`)
-    }
-
+// Called by Rubicon when Game State is requested
+// ReceiveGameState can be overridden.
+function ReceiveGameState(gameState) {
+  gameJSON = JSON.parse(gameState);
+  console.log(gameState);
 }
 
-let number = new Rational(3, 7);
+// Called by Rubicon when Board State is requested
+// ReceiveBoardState can be overridden.
+function ReceiveBoardState(boardState) {
+  boardJSON = JSON.parse(boardState);
+  console.log(boardJSON);
+}
 
-number.printDecimal();
+// Call this to execute a move
+// window.DoMoveExternal(12)
+function DoMoveExternal(tileId) {
+  gameInstance.SendMessage("Public", "DoMoveExternal", tileId);
+}
+
+// Call this to request the Board State
+// window.RequestBoardState()
+function RequestBoardState() {
+  gameInstance.SendMessage("Public", "RequestBoardState");
+}
+
+// Call this to request the Game State
+// window.RequestBoardState()
+function RequestGameState() {
+  gameInstance.SendMessage("Public", "RequestGameState");
+}
