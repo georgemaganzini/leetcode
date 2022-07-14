@@ -1,22 +1,22 @@
 // binary search version
 
 var kthSmallest = function(matrix, k) {
-    let lo = matrix[0][0], hi = matrix[matrix.length-1][matrix[0].length-1] + 1; // +1 because we don't want to forget the last number
+    let lo = matrix[0][0], hi = matrix[matrix.length-1][matrix[0].length-1];
     while (lo < hi) {
         let mid = lo + Math.floor((hi-lo)/2);
         let count = 0;
         for (let i = 0;i<matrix.length;i++) {
             for (let j=0;j<matrix.length;j++) {
+                // we have set an arbitraty mid, test to see how many numbers fall under it
                 if (matrix[i][j] <= mid) count++;
-                else break;
+                else break; // skip this row when matrix[i][j] exceeds value
             }
         }
-        if (count < k) lo = mid+1;
-        else hi = mid;
+        if (count < k) lo = mid+1; // our window is too small, make it bigger
+        else hi = mid; // our window is too big
     }
     return lo
 };
-
 
 
 let matrix = [[1,4,7,11,15],[2,5,8,12,19],[3,6,9,16,22],[10,13,14,17,24],[18,21,23,26,30]], k = 5;
