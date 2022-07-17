@@ -8,9 +8,9 @@ var strStr = function(haystack, needle) {
                 else if (j === needle.length - 1) return i;
             }
         }
+    }
     return indexOfStart;
 };
-
 let haystack = "mississippi", needle = "issip";
 
 console.log(strStr(haystack, needle));
