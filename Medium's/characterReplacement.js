@@ -6,10 +6,14 @@ const characterReplacement = (s, k) => {
 
   while (right < s.length) {
     const char = s[right];
-    visited[char] = visited[char] ? visited[char] + 1 : 1;
+    visited[char] = visited[char] + 1 || 1;
 
     if (visited[char] > maxCharCount) maxCharCount = visited[char];
 
+    // does not need to be a while loop because it does not get triggered by an increase to maxCharCount
+    // can get triggered by a maxCharCount swap though
+    // using a sliding window, so just kick out the left one at a time regardless of if it is maxCharCount, which gets updated every loop
+    // window is still permanently expanded by early string of characters in a row for when it is calc'd at end
     if (right - left + 1 - maxCharCount > k) {
       visited[s[left]]--;
       left++;
