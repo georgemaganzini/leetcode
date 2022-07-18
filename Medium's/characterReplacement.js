@@ -1,33 +1,55 @@
 const characterReplacement = (s, k) => {
-  let left = 0;
-  let right = 0;
-  let maxCharCount = 0;
-  const visited = {};
+    let left = 0;
+    let right = 0;
+    let maxCharCount = 0;
+    const map = new Map();
 
-  while (right < s.length) {
-    const char = s[right];
-    visited[char] = visited[char] + 1 || 1;
+    while (right < s.length){
+        const char = s[right];
+        map.set(char, map.get(char) + 1 || 1);
 
-    if (visited[char] > maxCharCount) maxCharCount = visited[char];
+        if (map.get(char) > maxCharCount) maxCharCount = map.get(char);
 
-    // does not need to be a while loop because it does not get triggered by an increase to maxCharCount
-    // can get triggered by a maxCharCount swap though
-    // using a sliding window, so just kick out the left one at a time regardless of if it is maxCharCount, which gets updated every loop
-    // window is still permanently expanded by early string of characters in a row for when it is calc'd at end
-    if (right - left + 1 - maxCharCount > k) {
-      visited[s[left]]--;
-      left++;
+        if (right - left + 1 - maxCharCount > k){
+            const leftChar = s[left];
+            map.set(leftChar, map.get(leftChar) - 1);
+            left++;
+        }
+        right++;
     }
-
-    right++;
-  }
-
-  return right - left;
+    return right - left;
 };
 
-
-let s =  "AABABBA", k = 1;
+let s = "ABAB", k = 2;
 console.log(characterReplacement(s, k))
+
+// const characterReplacement = (s, k) => {
+//   let left = 0;
+//   let right = 0;
+//   let maxCharCount = 0;
+//   const visited = {};
+
+//   while (right < s.length) {
+//     const char = s[right];
+//     visited[char] = visited[char] + 1 || 1;
+
+//     if (visited[char] > maxCharCount) maxCharCount = visited[char];
+
+//     // does not need to be a while loop because it does not get triggered by an increase to maxCharCount
+//     // can get triggered by a maxCharCount swap though
+//     // using a sliding window, so just kick out the left one at a time regardless of if it is maxCharCount, which gets updated every loop
+//     // window is still permanently expanded by early string of characters in a row for when it is calc'd at end
+//     if (right - left + 1 - maxCharCount > k) {
+//       visited[s[left]]--;
+//       left++;
+//     }
+
+//     right++;
+//   }
+
+//   return right - left;
+// };
+
 
 // works but too slow & complicated
 
