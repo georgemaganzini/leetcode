@@ -11,6 +11,7 @@ var strStr = function(haystack, needle) {
     }
     return indexOfStart;
 };
+
 let haystack = "mississippi", needle = "issip";
 
 console.log(strStr(haystack, needle));
