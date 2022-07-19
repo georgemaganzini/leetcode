@@ -1,3 +1,6 @@
+// frequency map + sliding window rather than actually generating all permuations
+// use counter to track unique letters rather than total # of letters
+// this way code is easier to understand and we dont have to delete and re add keys
 var checkInclusion = function(s1, s2) {
     if (s1 === "" || s2 === "") {
         return false;
