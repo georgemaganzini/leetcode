@@ -13,7 +13,6 @@ var convert = function(s, numRows) {
              result[i] += s[counter];
         }
     }
-    console.log(result)
 
     return result.join("");
 };
