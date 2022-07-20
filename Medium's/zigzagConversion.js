@@ -1,18 +1,19 @@
 var convert = function(s, numRows) {
-    s = s.split('');
     let result = Array(numRows).fill('');
+    let counter = 0;
 
-    while (s.length > 0){
+    while (counter < s.length){
         // down
-        for (i = 0; i < numRows; i++) {
-            if (s[0]) result[i] += s.shift(); // would use queue/deque here
+        for (i = 0; i < numRows && counter < s.length; i++, counter++) {
+            result[i] += s[counter];
         }
 
         // up, right
-        for (i = numRows - 2; i > 0; i--) {
-             if (s[0]) result[i] += s.shift();
+        for (i = numRows - 2; i > 0 && counter < s.length; i--, counter++) {
+             result[i] += s[counter];
         }
     }
+    console.log(result)
 
     return result.join("");
 };
