@@ -4,32 +4,24 @@ var LRUCache = function(capacity) {
 };
 
 LRUCache.prototype.get = function(key) {
-    if(this.m.has(key))
-    {
+    if(this.m.has(key)){
         // Remove and put key/value back into hash to move this key to the back (meaning recently used)
         var value = this.m.get(key);
         this.m.delete(key);
         this.m.set(key,value);
         return value;
-    }else
-    {
-        return -1;
-    }
+    } else return -1;
 };
 
 LRUCache.prototype.put = function(key, value) {
-    if(this.m.has(key)) //remove it and add it back with new value
-    {
+    if (this.m.has(key)){//remove it and add it back with new value
         this.m.delete(key);
         this.m.set(key,value);
-    }else if(this.m.size == this.capacity) //remove the first key (Map adds new keys to the back)
-    {
+    } else if(this.m.size == this.capacity){ //remove the first key (Map adds new keys to the back)
         var first_key = this.m.keys().next().value;
         this.m.delete(first_key);
         this.m.set(key,value);
-    }else{  //Map has extra capacity
-        this.m.set(key,value);
-    }
+    } else this.m.set(key,value); //Map has extra capacity
 };
 
 
