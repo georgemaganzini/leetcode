@@ -25,10 +25,6 @@ var moveZeroes = function(nums) {
 
 let nums = [0,1]
 
-// [1,1,3,0,0]
-
-// [1,3,12,0,0]
-
 // more concise:
 
 var pos = 0;
