@@ -7,7 +7,7 @@ var numSubarrayProductLessThanK = function(nums, k) {
             product /= nums[left];
             left++;
         }
-        res += right - left + 1;
+        res += right - left + 1; // if subarray is valid, count it's permutations as well
         right++;
     }
     return res;
