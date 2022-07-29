@@ -1,15 +1,4 @@
-/**
- * Definition for a binary tree node.
- * function TreeNode(val, left, right) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.left = (left===undefined ? null : left)
- *     this.right = (right===undefined ? null : right)
- * }
- */
-/**
- * @param {TreeNode} root
- * @return {number}
- */
+// TODO: Review
 var widthOfBinaryTree = function(root) {
     const minPos = [0];
     let maxWidth = 0;
@@ -29,4 +18,3 @@ var widthOfBinaryTree = function(root) {
     }
 };
 let root = [1,3,2,5,3,null,9];
-
